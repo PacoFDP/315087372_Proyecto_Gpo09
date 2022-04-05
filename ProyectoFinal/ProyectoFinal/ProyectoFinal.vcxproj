@@ -23,13 +23,13 @@
     <ClInclude Include="Model.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\lamp.frag" />
-    <None Include="Shaders\lamp.vs" />
-    <None Include="Shaders\lighting.frag" />
-    <None Include="Shaders\lighting.vs" />
+    <ClCompile Include="ProyectoFinal.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ProyectoFinal.cpp" />
+    <None Include="Shaders\Practica 8\lamp.frag" />
+    <None Include="Shaders\Practica 8\lamp.vs" />
+    <None Include="Shaders\Practica 8\lighting.frag" />
+    <None Include="Shaders\Practica 8\lighting.vs" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

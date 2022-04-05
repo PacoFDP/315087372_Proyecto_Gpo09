@@ -1,12 +1,1 @@
-﻿  ProyectoFinal.cpp
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(216,30): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(441,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(442,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(446,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(447,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(449,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(450,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-soil2-debug.lib(image_DXT.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(image_DXT.obj)' o en 'D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-soil2-debug.lib(image_helper.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(image_helper.obj)' o en 'D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-soil2-debug.lib(SOIL2.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(SOIL2.obj)' o en 'D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-  ProyectoFinal.vcxproj -> D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\Debug\ProyectoFinal.exe
+﻿  ProyectoFinal.vcxproj -> D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\Debug\ProyectoFinal.exe

@@ -100,8 +100,8 @@ int main()
 
     // Setup and compile our shaders
     Shader shader("Shaders/modelLoading.vs", "Shaders/modelLoading.frag");
-    Shader lampshader("Shaders/lamp.vs", "Shaders/lamp.frag");
-    Shader lightingShader("Shaders/lighting.vs", "Shaders/lighting.frag");
+    Shader lampshader("Shaders/Practica 8/lamp.vs", "Shaders/Practica 8/lamp.frag");
+    Shader lightingShader("Shaders/Practica 8/lighting.vs", "Shaders/Practica 8/lighting.frag");
 
 
 
