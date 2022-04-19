@@ -103,7 +103,7 @@ int main()
     Shader lampshader("Shaders/Practica 8/lamp.vs", "Shaders/Practica 8/lamp.frag");
     Shader lightingShader("Shaders/Practica 8/lighting.vs", "Shaders/Practica 8/lighting.frag");
 
-
+    //comentario para corregir fecha commit
 
     // Load models
 
