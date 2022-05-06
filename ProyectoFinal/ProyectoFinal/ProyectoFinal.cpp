@@ -62,7 +62,7 @@ int main()
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     // Create a GLFWwindow object that we can use for GLFW's functions
-    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Iluminacion", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Proyecto Final", nullptr, nullptr);
 
     if (nullptr == window)
     {
@@ -133,6 +133,11 @@ int main()
     //Escritorio
     Model escritorioMadera((char*)"Models/Escritorio/EscritorioMadera.obj");
     Model escritorioMarmol((char*)"Models/Escritorio/EscritorioMarmol.obj");
+
+    //Exterior interior
+    Model ExteriorInterior((char*)"Models/ExteriorInterior/ExteriorInterior.obj");
+
+
 
     
     glm::mat4 projection = glm::perspective(camera.GetZoom(), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
@@ -418,6 +423,18 @@ int main()
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         escritorioMarmol.Draw(lightingShader);
+
+        // ------------------------   Exterior
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 0.9f, 0.9f, 0.9f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.2f, 0.2f, 0.2f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.50f);
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(0.0f, -2.0, 0.0f));
+        //model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        //model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        ExteriorInterior.Draw(lightingShader);
 
         glBindVertexArray(0);
 
