@@ -134,6 +134,10 @@ int main()
     Model escritorioMadera((char*)"Models/Escritorio/EscritorioMadera.obj");
     Model escritorioMarmol((char*)"Models/Escritorio/EscritorioMarmol.obj");
 
+    //Pantalla
+    Model pantallaCristal((char*)"Models/Pantalla/pantallaCristal.obj");
+    Model pantallaEstructura((char*)"Models/Pantalla/pantallaEstructura.obj");
+
     //Exterior interior
     Model ExteriorInterior((char*)"Models/ExteriorInterior/ExteriorInterior.obj");
 
@@ -272,7 +276,7 @@ int main()
 
         // Draw the loaded model
         glm::mat4 model(1);
-        model = glm::translate(model, glm::vec3(-12.5f, -3.0f, -10.0f));
+        //model = glm::translate(model, glm::vec3(-12.5f, -3.0f, -10.0f));
         //model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
@@ -284,7 +288,7 @@ int main()
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.00f, 0.00f, 0.00f);
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.0f);
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-12.5f, -3.0f, -10.0f));
+        //model = glm::translate(model, glm::vec3(-12.5f, -3.0f, -10.0f));
         cojinesSillon.Draw(lightingShader);
 
         // ----------------  SILLA DE ESCRITORIO --------------------
@@ -293,7 +297,6 @@ int main()
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.633f, 0.727811f, 0.633f);
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.6f);
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(4.0f, 0.0f, 4.0f));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         estructura.Draw(lightingShader);
@@ -301,7 +304,6 @@ int main()
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.00f, 0.00f, 0.00f);
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.0f);
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(4.0f, 0.0f, 4.0f));
         cojinesAsiento.Draw(lightingShader);
         cojinesRespaldo.Draw(lightingShader);
 
@@ -312,8 +314,6 @@ int main()
 
         // Draw the loaded model
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-9.5f, -3.0f, 10.0f));
-        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
 
@@ -323,8 +323,6 @@ int main()
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.00f, 0.00f, 0.00f);
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.0f);
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-9.5f, -3.0f, 10.0f));
-        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         arribaCama.Draw(lightingShader);
 
 
@@ -333,8 +331,6 @@ int main()
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.633f, 0.727811f, 0.633f);
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.6f);
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-5.5f, -2.5f, -12.0f));
-        model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         maderaMesa.Draw(lightingShader);
@@ -343,9 +339,6 @@ int main()
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.2f, 0.2f, 0.2f);
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.50f);
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-6.0f, -2.5f, -12.0f));
-        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         teteraYVaso.Draw(lightingShader);
@@ -355,9 +348,6 @@ int main()
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.00f, 0.00f, 0.00f);
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.0f);
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-6.0f, -2.5f, -12.0f));
-        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         charolaYPlato.Draw(lightingShader);
@@ -368,9 +358,6 @@ int main()
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.633f, 0.727811f, 0.633f);
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.6f);
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(8.0f, 2.3f, 2.0f));
-        model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         focoLampara.Draw(lightingShader);
@@ -379,9 +366,6 @@ int main()
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.2f, 0.2f, 0.2f);
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.50f);
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(8.0f, 2.3f, 2.0f));
-        model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         estructuraLampara.Draw(lightingShader);
@@ -391,9 +375,6 @@ int main()
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.00f, 0.00f, 0.00f);
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.0f);
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(8.0f, 2.3f, 2.0f));
-        model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         conoLampara.Draw(lightingShader);
@@ -405,9 +386,6 @@ int main()
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.2f, 0.2f, 0.2f);
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.50f);
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(7.0f, -1.2f, 7.0f));
-        //model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        //model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         escritorioMadera.Draw(lightingShader);
@@ -417,21 +395,34 @@ int main()
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.2f, 0.2f, 0.2f);
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.50f);
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(7.0f, -1.2f, 7.0f));
-        //model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        //model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         escritorioMarmol.Draw(lightingShader);
+
+        // --------------------  Pantalla  -------------------------------
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 1.0f, 1.0f, 1.0f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.633f, 0.727811f, 0.633f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.6f);
+        model = glm::mat4(1);
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        pantallaCristal.Draw(lightingShader);
+
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 0.8f, 0.8f, 0.8f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.2f, 0.2f, 0.2f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.50f);
+        model = glm::mat4(1);
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        pantallaEstructura.Draw(lightingShader);
+
+
 
         // ------------------------   Exterior
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 0.9f, 0.9f, 0.9f);
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.2f, 0.2f, 0.2f);
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.50f);
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(0.0f, -2.0, 0.0f));
-        //model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        //model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         ExteriorInterior.Draw(lightingShader);

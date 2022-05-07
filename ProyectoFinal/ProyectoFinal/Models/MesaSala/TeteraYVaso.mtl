@@ -1,43 +1,35 @@
-newmtl initialShadingGroup
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-newmtl lambert2SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd maderaMesa.jpg
-Ni 1.00
-newmtl lambert3SG
+newmtl CharolaYPlato:lambert3SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd negro.jpg
 Ni 1.00
-newmtl lambert4SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd blanco.jpg
-Ni 1.00
-newmtl lambert5SG
+newmtl CharolaYPlato:lambert5SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd amarillo.jpg
 Ni 1.00
-newmtl teapot_n_glass:None
+newmtl MaderaMesa:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd maderaMesa.jpg
+Ni 1.00
+newmtl TeteraYVaso:lambert4SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd blanco.jpg
 Ni 1.00
-Ks 0.80 0.80 0.80
-Ns 0.00
+newmtl lambert12SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Alfombra.jpg
+Ni 1.00
