@@ -48,7 +48,19 @@ float movelightPosZ = 0.0f;
 GLfloat deltaTime = 0.0f;
 GLfloat lastFrame = 0.0f;
 float rot = 0.0f;
-bool activanim = false;
+bool activanim = false;  
+
+//Variable animacion
+// --- ventilador
+float rotacionVentilador = 0;
+bool ventiladorEncendido = false;
+
+// -- ventana
+float posicionVentana = 0;
+bool ventanaEncendido = false;
+
+float rotacionPuerta = 0;
+bool puertaEncendido = false;
 
 int main()
 {
@@ -138,6 +150,22 @@ int main()
     Model pantallaCristal((char*)"Models/Pantalla/pantallaCristal.obj");
     Model pantallaEstructura((char*)"Models/Pantalla/pantallaEstructura.obj");
 
+    //Ventilador
+    Model ventiladorEstructura((char*)"Models/Ventilador/VentiladorEstructura.obj");
+    Model ventiladorHelices((char*)"Models/Ventilador/VentiladorHelices.obj");
+
+    //Ventanas 
+    Model VentanaEstructuraFija((char*)"Models/Ventana/VentanaEstructuraFija.obj");
+    Model VentanaCristalFijo((char*)"Models/Ventana/VentanaCristalFijo.obj");
+    Model VentanaEstructuraMovil((char*)"Models/Ventana/VentanaEstructuraMovil.obj");
+    Model VentanaCristalMovil((char*)"Models/Ventana/VentanaCristalMovil.obj");
+
+    //Puertas
+    Model PuertaEstructuraFija((char*)"Models/Puerta/PuertaEstructuraFijo.obj");
+    Model PuertaCristalFijo((char*)"Models/Puerta/PuertaCristalFijo.obj");
+    Model PuertaEstructuraMovil((char*)"Models/Puerta/PuertaEstructuraMovil.obj");
+    Model PuertaCristalMovil((char*)"Models/Puerta/PuertaCristalMovil.obj");
+    
     //Exterior interior
     Model ExteriorInterior((char*)"Models/ExteriorInterior/ExteriorInterior.obj");
 
@@ -427,6 +455,103 @@ int main()
         glBindVertexArray(VAO);
         ExteriorInterior.Draw(lightingShader);
 
+        //- --------------------- Ventilador -------------------
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 1.0f, 1.0f, 1.0f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.00f, 0.00f, 0.00f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.0f);
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(0.0f, 16.5f, -10.0f));
+        //model = glm::rotate(model, glm::radians(rotacionVentilador), glm::vec3(0.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        ventiladorEstructura.Draw(lightingShader);
+
+
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 1.0f, 1.0f, 1.0f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.00f, 0.00f, 0.00f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.0f);
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(0.0f, 16.5f, -10.0f));
+        model = glm::rotate(model, glm::radians(rotacionVentilador), glm::vec3(0.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        ventiladorHelices.Draw(lightingShader);
+
+        // -------------------  Ventana ---------------
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 0.8f, 0.8f, 0.8f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.2f, 0.2f, 0.2f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.50f);
+        model = glm::mat4(1);
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        VentanaEstructuraFija.Draw(lightingShader);
+
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 1.0f, 1.0f, 1.0f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.633f, 0.727811f, 0.633f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.6f);
+        model = glm::mat4(1);
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        VentanaCristalFijo.Draw(lightingShader);
+
+                             // -- Parte movible
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 0.8f, 0.8f, 0.8f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.2f, 0.2f, 0.2f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.50f);
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(posicionVentana, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        VentanaEstructuraMovil.Draw(lightingShader);
+
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 1.0f, 1.0f, 1.0f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.633f, 0.727811f, 0.633f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.6f);
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(posicionVentana, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        VentanaCristalMovil.Draw(lightingShader);
+
+        // ----------------------------   Puerta  ---
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 0.8f, 0.8f, 0.8f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.2f, 0.2f, 0.2f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.50f);
+        model = glm::mat4(1);
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        PuertaEstructuraFija.Draw(lightingShader);
+
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 1.0f, 1.0f, 1.0f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.633f, 0.727811f, 0.633f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.6f);
+        model = glm::mat4(1);
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        PuertaCristalFijo.Draw(lightingShader);
+
+        // -- Parte movible
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 0.8f, 0.8f, 0.8f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.2f, 0.2f, 0.2f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.50f);
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(12.1, 0.0f,22.71f));
+        model = glm::rotate(model, glm::radians(rotacionPuerta), glm::vec3(0.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        PuertaEstructuraMovil.Draw(lightingShader);
+
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 1.0f, 1.0f, 1.0f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.633f, 0.727811f, 0.633f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.6f);
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(12.1, 0.0f,22.71f));
+        model = glm::rotate(model, glm::radians(rotacionPuerta), glm::vec3(0.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        PuertaCristalMovil.Draw(lightingShader);
+
+
         glBindVertexArray(0);
 
 
@@ -498,6 +623,35 @@ void DoMovement()
             rot -= 0.1f;
     }
 
+    //-- actualizacion de rotacion ventilador
+    if (ventiladorEncendido == true) {
+        rotacionVentilador += 1.5;
+    }
+
+    // -- actualizacion de posicion en ventana
+    if (ventanaEncendido == false) {
+        if (posicionVentana >= -5.5) {
+            posicionVentana -= 0.01;
+        }
+    }
+    if (ventanaEncendido == true) {
+        if (posicionVentana <= 0.0) {
+            posicionVentana += 0.01;
+        }
+    }
+    
+    //   --------- movimiento de la puerta
+
+    if (puertaEncendido == true) {
+        if (rotacionPuerta <= 90) {
+            rotacionPuerta += 0.1;
+        }
+    }
+    if (puertaEncendido == false) {
+        if (rotacionPuerta >= 0) {
+            rotacionPuerta -= 0.1;
+        }
+    }
 }
 
 // Is called whenever a key is pressed/released via GLFW
@@ -553,6 +707,24 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
     {
         //activanim = true;
         movelightPosY -= 0.1f;
+    }
+
+    if (keys[GLFW_KEY_X])
+    {
+        // Se activa o desactiva ventilador
+        ventiladorEncendido = !ventiladorEncendido;
+    }
+
+    if (keys[GLFW_KEY_P])
+    {
+        // Se activa o desactiva ventilador
+        ventanaEncendido = !ventanaEncendido;
+    }
+        
+    if (keys[GLFW_KEY_O])
+    {
+        // Se activa o desactiva puerta
+        puertaEncendido = !puertaEncendido;
     }
 
 }
