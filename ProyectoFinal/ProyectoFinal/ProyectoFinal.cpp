@@ -1,7 +1,7 @@
 
 // Std. Includes
 #include <string>
-
+#include <cmath>
 // GLEW
 #include <GL/glew.h>
 
@@ -34,7 +34,7 @@ void DoMovement();
 
 
 // Camera
-Camera camera(glm::vec3(0.0f, 0.0f, 0.0f));
+Camera camera(glm::vec3(0.0f, 4.0f, 20.0f));
 bool keys[1024];
 GLfloat lastX = 400, lastY = 300;
 bool firstMouse = true;
@@ -43,7 +43,7 @@ bool firstMouse = true;
 // Light attributes
 glm::vec3 lightPos(0.5f, 0.5f, 2.5f);
 float movelightPosX = 0.0f;
-float movelightPosY = 0.0f;
+float movelightPosY = 5.0f;
 float movelightPosZ = 0.0f;
 GLfloat deltaTime = 0.0f;
 GLfloat lastFrame = 0.0f;
@@ -58,9 +58,44 @@ bool ventiladorEncendido = false;
 // -- ventana
 float posicionVentana = 0;
 bool ventanaEncendido = false;
-
+// -- Puerta
 float rotacionPuerta = 0;
 bool puertaEncendido = false;
+
+//  -- Balon
+float posicionBalonX=0;
+float posicionBalonY=0;
+
+bool rebote1 = true;
+bool rebote2 = false;
+bool rebote3 = false;
+bool deslizamiento = false;
+
+bool rebote1Izq = false;
+bool rebote2Izq = false;
+bool rebote3Izq = false;
+bool deslizamientoIzq = false;
+
+bool balonEncendido = false;
+float h = 4; //posicion vertical de vertice
+float k = 4; //posicion horizontal de vertice
+float p = 1; // foco
+
+float rotacionBalon = 0;
+
+
+//Variables para el manejo de luz
+bool lamparaEncedida = false;
+float brilloLampara = 0;
+bool focoEncendido = false;
+float brilloFoco = 0;
+
+// Positions of the point lights
+glm::vec3 pointLightPositions[] = {
+    glm::vec3(0.0f,7.0f, 0.0f),
+    glm::vec3(-0.0f,4.05f, -0.0f),
+};
+
 
 int main()
 {
@@ -115,6 +150,10 @@ int main()
     Shader lampshader("Shaders/Practica 8/lamp.vs", "Shaders/Practica 8/lamp.frag");
     Shader lightingShader("Shaders/Practica 8/lighting.vs", "Shaders/Practica 8/lighting.frag");
 
+    // Shaders necesarios para pointlights
+    /*Shader lightingShader("Shaders/lighting.vs", "Shaders/lighting.frag");
+    Shader lampshader("Shaders/lamp.vs", "Shaders/lamp.frag");*/
+
     //comentario para corregir fecha commit
 
     // Load models
@@ -165,6 +204,9 @@ int main()
     Model PuertaCristalFijo((char*)"Models/Puerta/PuertaCristalFijo.obj");
     Model PuertaEstructuraMovil((char*)"Models/Puerta/PuertaEstructuraMovil.obj");
     Model PuertaCristalMovil((char*)"Models/Puerta/PuertaCristalMovil.obj");
+
+    // Balon
+    Model Balon((char*)"Models/Balon/Balon.obj");
     
     //Exterior interior
     Model ExteriorInterior((char*)"Models/ExteriorInterior/ExteriorInterior.obj");
@@ -277,6 +319,9 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         lightingShader.Use();
+
+        //VERIFICAR ESTA LINEA
+        
         GLint lightPosLoc = glGetUniformLocation(lightingShader.Program, "light.position");
         GLint viewPosLoc = glGetUniformLocation(lightingShader.Program, "viewPos");
         glUniform3f(lightPosLoc, lightPos.x + movelightPosX, lightPos.y + movelightPosY, lightPos.z + movelightPosZ);
@@ -288,7 +333,25 @@ int main()
         glUniform3f(glGetUniformLocation(lightingShader.Program, "light.diffuse"), 0.5f, 0.5f, 0.5f);
         glUniform3f(glGetUniformLocation(lightingShader.Program, "light.specular"), 2.0f, 2.0f, 2.0f);
 
+        // Point light 2
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].position"), pointLightPositions[0].x, pointLightPositions[0].y, pointLightPositions[0].z);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].ambient"), brilloLampara, brilloLampara, brilloLampara);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].diffuse"), brilloLampara, brilloLampara, brilloLampara);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].specular"), 1.0f, 1.0f, 0.0f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].constant"), 1.0f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].linear"), 0.35f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].quadratic"), 0.44f);
 
+
+
+        // Point light 2
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[1].position"), pointLightPositions[1].x, pointLightPositions[1].y, pointLightPositions[1].z);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[1].ambient"), brilloFoco, brilloFoco, brilloFoco);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[1].diffuse"), brilloFoco, brilloFoco, brilloFoco);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[1].specular"), 1.0f, 1.0f, 0.0f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[1].constant"), 1.0f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[1].linear"), 0.35f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[1].quadratic"), 0.44f);
 
 
         glm::mat4 view = camera.GetViewMatrix();
@@ -551,13 +614,49 @@ int main()
         glBindVertexArray(VAO);
         PuertaCristalMovil.Draw(lightingShader);
 
+        // -- Balon 
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 1.0f, 1.0f, 1.0f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.633f, 0.727811f, 0.633f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.6f);
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(posicionBalonX, posicionBalonY, 0.0f));
+        //model = glm::rotate(model, glm::radians(rotacionBalon), glm::vec3(0.0f, 0.0f, 1.0f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        Balon.Draw(lightingShader);
+
+        //VERIFICAR TODO ESTO
+        lampshader.Use();
+        // Get location objects for the matrices on the lamp shader (these could be different on a different shader)
+        GLint modelLoc = glGetUniformLocation(lampshader.Program, "model");
+        GLint viewLoc = glGetUniformLocation(lampshader.Program, "view");
+        GLint projLoc = glGetUniformLocation(lampshader.Program, "projection");
+
+        // Set matrices
+        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+        glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
+        model = glm::mat4(1);
+        model = glm::translate(model, lightPos);
+        model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+        //dibuja los puntos de luz
+        for (GLuint i = 0; i < 2; i++)
+        {
+            model = glm::mat4(1);
+            model = glm::translate(model, pointLightPositions[i]);
+            model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
+            glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+            glBindVertexArray(VAO);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
+
 
         glBindVertexArray(0);
 
 
 
 
-        lampshader.Use();
+        //lampshader.Use();
         glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
         glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
         model = glm::mat4(1.0f);
@@ -569,7 +668,7 @@ int main()
         model = glm::scale(model, glm::vec3(0.05f));
         glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        //glDrawArrays(GL_TRIANGLES, 0, 36);
 
         /*model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(-0.0f, 0.0f, -5.0F));
@@ -639,7 +738,7 @@ void DoMovement()
             posicionVentana += 0.01;
         }
     }
-    
+
     //   --------- movimiento de la puerta
 
     if (puertaEncendido == true) {
@@ -652,6 +751,159 @@ void DoMovement()
             rotacionPuerta -= 0.1;
         }
     }
+    // Balon en movimiento
+    if (balonEncendido == true) {
+        if (rebote1 == true) { // Realiza primera parabola der(rebote1)
+            posicionBalonX += 0.1;
+            posicionBalonY = (pow((posicionBalonX - h), 2) / -4 * p) + k; // Los valores de h,k y p son con los que se difinieron las varaibles
+            if (posicionBalonX >= 8) { //Comienza segundo rebote
+                rebote2 = true;
+                rebote1 = false;
+                h = 11; //posicion horizontal de vertice
+                k = 2; //posicion vertical de vertice
+                p = 1.1; // foco
+            }
+        }
+
+        if (rebote2 == true) { //Realiza segunda parabola der(rebote2)
+            posicionBalonX += 0.07;
+            posicionBalonY = (pow((posicionBalonX - h), 2) / -4 * p) + k; // Loa valores h,k y p se definen en rebote1
+            if (posicionBalonX >= 14) { //comienza rebote 3
+                rebote3 = true;
+                rebote2 = false;
+                h = 15; //posicion horizontal de vertice
+                k = 1; //posicion vertical de vertice
+                p = 0.27; // foco
+            }
+        }
+
+        if (rebote3 == true) { //Realiza tercera parabola(rebot3)
+            posicionBalonX += 0.04;
+            posicionBalonY = (pow((posicionBalonX - h), 2) / -4 * p) + k; // Los valores h,k, y p se definen en rebote2
+            if (posicionBalonX >= 16) { // comienza el deslizamiento
+                deslizamiento = true;
+                rebote3 = false;
+                posicionBalonY = 0; //asegurar que baje hasta el suelo y no flote por la presion con la que se calcula y
+            }
+        }
+
+        if (deslizamiento == true) { // Realiza deslizamiento ya para deternerse
+            posicionBalonX += 0.01;
+            if (posicionBalonX >= 18) { //Si pasa de 18 se detiene deslizamiento y activa reboteIzq para que este listo en el momento que indique el usuario
+                deslizamiento = false;
+                rebote1Izq = true;
+                h = 14; //posicion vertical de vertice
+                k = 4; //posicion horizontal de vertice
+                p = 1; // foco
+            }
+        } 
+
+        
+    }
+    if (balonEncendido == false) { // Se regresa el balon 
+        if (rebote1Izq == true) { //Realiza primera parabola pero ahora de regreso
+            posicionBalonX -= 0.1;
+            posicionBalonY = (pow((posicionBalonX - h), 2) / -4 * p) + k;
+            if (posicionBalonX <= 10) { // Activa segunda parabola de regreso
+                rebote2Izq = true;
+                rebote1Izq = false;
+                h = 7; //posicion vertical de vertice
+                k = 2; //posicion horizontal de vertice
+                p = 1.1; // foco
+            }
+        }
+        if (rebote2Izq == true) { //Realiza segunda parabola
+            posicionBalonX -= 0.07;
+            posicionBalonY = (pow((posicionBalonX - h), 2) / -4 * p) + k;
+            if (posicionBalonX <= 4) { //Activa tercera parabola de regreso
+                rebote3Izq = true;
+                rebote2Izq = false;
+                h = 3; //posicion vertical de vertice
+                k = 1; //posicion horizontal de vertice
+                p = 0.27; // foco
+            }
+        }
+
+        if (rebote3Izq == true) { //Realiza tercera parabola de regreso
+            posicionBalonX -= 0.04;
+            posicionBalonY = (pow((posicionBalonX - h), 2) / -4 * p) + k;
+            if (posicionBalonX <= 2.0) { //activa deslizamiento de regreso hasta llegar a su posicion inicial
+                deslizamientoIzq = true;
+                rebote3Izq = false;
+                posicionBalonY = 0; //asegurar que baje hasta el suelo y no flote por la presion con la que se calcula y
+            }
+        }
+
+        if (deslizamientoIzq == true) { //realiza deslizamiento antes de detenerse
+            posicionBalonX -= 0.01;
+            if (posicionBalonX <= 0) { // Activa primer rebote de ida para funciona cuando el usuario presione V de nuevo
+                deslizamientoIzq = false;
+                rebote1 = true;
+                h = 4; //posicion vertical de vertice
+                k = 4; //posicion horizontal de vertice
+                p = 1; // foco
+            }
+        }
+        //if (rebote1Izq == true) {
+        //    posicionBalonX -= 0.1;
+        //    posicionBalonY = (pow((posicionBalonX - h), 2) / -4 * p) + k;
+        //    if (posicionBalonX <= 8) {
+        //        rebote2Izq = true;
+        //        rebote1Izq = false;
+        //        h = 5; //posicion vertical de vertice
+        //        k = 2; //posicion horizontal de vertice
+        //        p = 1.1; // foco
+        //    }
+
+
+        //}
+
+        //if (rebote2Izq == true) {
+        //    posicionBalonX += 0.07;
+        //    posicionBalonY = (pow((posicionBalonX - h), 2) / -4 * p) + k;
+        //    if (posicionBalonX <= 2) {
+        //        rebote3Izq = true;
+        //        rebote2Izq = false;
+        //        h = 1; //posicion vertical de vertice
+        //        k = 1; //posicion horizontal de vertice
+        //        p = 0.27; // foco
+        //    }
+        //}
+
+        //if (rebote3Izq == true) {
+        //    posicionBalonX += 0.04;
+        //    posicionBalonY = (pow((posicionBalonX - h), 2) / -4 * p) + k;
+        //    if (posicionBalonX <= 0) {
+        //        deslizamientoIzq = true;
+        //        rebote3Izq = false;
+        //        posicionBalonY = 0;
+        //    }
+        //}
+
+        //if (deslizamientoIzq == true) {
+        //    posicionBalonX += 0.01;
+        //    if (posicionBalonX >= 19) {
+        //        deslizamientoIzq = false;
+        //        rebote1 = true;
+        //    }
+        //}
+    }
+
+    /*if (lamparaEncedida = true) {
+        brilloLampara = 1.0f;
+    }
+    if (lamparaEncedida = false) {
+        brilloLampara = 0.0f;
+    }
+
+    if (focoEncendido == true) {
+        brilloFoco = 1.0;
+    }
+    if (focoEncendido == false) {
+        brilloFoco = 0.0f;
+    }*/
+    
+    
 }
 
 // Is called whenever a key is pressed/released via GLFW
@@ -727,6 +979,25 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
         puertaEncendido = !puertaEncendido;
     }
 
+    if (keys[GLFW_KEY_V])
+    {
+        // Se activa o desactiva puerta
+        balonEncendido = !balonEncendido;
+    }
+
+    //Encender lampara
+    if (keys[GLFW_KEY_F])
+    {
+        // Se activa o desactiva puerta
+        lamparaEncedida = !lamparaEncedida;
+        printf("Lampara encendida");
+    }
+    //Encender foco habitacion
+    if (keys[GLFW_KEY_R])
+    {
+        // Se activa o desactiva puerta
+        focoEncendido = !focoEncendido;
+    }
 }
 
 void MouseCallback(GLFWwindow* window, double xPos, double yPos)
