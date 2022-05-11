@@ -9,14 +9,28 @@ illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
+map_Kd txtMaderaCafeClaro.jpg
+Ni 1.00
+newmtl ExteriorInterior:lambert2SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
 map_Kd pastoafuera.jpg
+Ni 1.00
+newmtl ExteriorInterior:lambert2SG4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd CementoGris.jpg
 Ni 1.00
 newmtl ExteriorInterior:lambert3SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
-map_Kd maderaSillas.jpg
+map_Kd Azulejo.jpg
 Ni 1.00
 newmtl ExteriorInterior:lambert3SG2
 illum 4
@@ -24,6 +38,13 @@ Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd blanco.jpg
+Ni 1.00
+newmtl ExteriorInterior:lambert3SG5
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd maderaSillas.jpg
 Ni 1.00
 newmtl ExteriorInterior:lambert4SG
 illum 4
@@ -67,13 +88,6 @@ Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd Azul.jpg
 Ni 1.00
-newmtl ExteriorInterior:lambert10SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd Azulejo.jpg
-Ni 1.00
 newmtl ExteriorInterior:lambert11SG
 illum 4
 Kd 0.00 0.00 0.00
@@ -87,31 +101,4 @@ Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd BardaPiedra.jpg
-Ni 1.00
-newmtl initialShadingGroup
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-newmtl lambert2SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd CementoGris.jpg
-Ni 1.00
-newmtl lambert3SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd Azulejo.jpg
-Ni 1.00
-newmtl lambert4SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd blanco.jpg
 Ni 1.00

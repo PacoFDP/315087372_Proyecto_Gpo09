@@ -1,18 +1,25 @@
-newmtl CharolaYPlato:lambert3SG
+newmtl CharolaYPlato1:lambert3SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd negro.jpg
 Ni 1.00
-newmtl CharolaYPlato:lambert5SG
+newmtl CharolaYPlato1:lambert5SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd amarillo.jpg
 Ni 1.00
-newmtl MaderaMesa:lambert2SG
+newmtl CharolaYPlato1:lambert12SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Alfombra.jpg
+Ni 1.00
+newmtl MaderaMesa1:lambert2SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
@@ -25,11 +32,4 @@ Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd blanco.jpg
-Ni 1.00
-newmtl lambert12SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd Alfombra.jpg
 Ni 1.00

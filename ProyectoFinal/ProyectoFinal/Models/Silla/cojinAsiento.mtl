@@ -5,12 +5,19 @@ Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd cojinAsiento.jpg
 Ni 1.00
-newmtl cojinRespaldo1:lambert4SG
+newmtl cojinRespaldo:lambert4SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd texturaCojinRespaldo.jpg
+Ni 1.00
+newmtl estructuraSilla:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd maderaSillas.jpg
 Ni 1.00
 newmtl estructuraSilla1:lambert2SG
 illum 4

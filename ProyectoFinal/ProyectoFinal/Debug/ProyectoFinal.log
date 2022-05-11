@@ -1,31 +1,50 @@
 ﻿  ProyectoFinal.cpp
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(309,30): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(733,36): warning C4305: '-=': truncamiento de 'double' a 'float'
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(738,36): warning C4305: '+=': truncamiento de 'double' a 'float'
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(746,34): warning C4305: '+=': truncamiento de 'double' a 'float'
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(751,34): warning C4305: '-=': truncamiento de 'double' a 'float'
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(757,34): warning C4305: '+=': truncamiento de 'double' a 'float'
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(758,70): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(764,24): warning C4305: '=': truncamiento de 'double' a 'float'
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(769,35): warning C4305: '+=': truncamiento de 'double' a 'float'
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(770,70): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(776,25): warning C4305: '=': truncamiento de 'double' a 'float'
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(781,35): warning C4305: '+=': truncamiento de 'double' a 'float'
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(782,70): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(791,35): warning C4305: '+=': truncamiento de 'double' a 'float'
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(805,34): warning C4305: '-=': truncamiento de 'double' a 'float'
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(806,70): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(812,24): warning C4305: '=': truncamiento de 'double' a 'float'
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(816,35): warning C4305: '-=': truncamiento de 'double' a 'float'
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(817,70): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(823,25): warning C4305: '=': truncamiento de 'double' a 'float'
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(828,35): warning C4305: '-=': truncamiento de 'double' a 'float'
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(829,70): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(838,35): warning C4305: '-=': truncamiento de 'double' a 'float'
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1007,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1008,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1012,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1013,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1015,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1016,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(120,30): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(357,30): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(934,36): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(939,36): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(947,34): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(952,34): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(958,37): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(966,34): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(967,70): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(973,24): warning C4305: '=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(978,35): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(979,70): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(985,25): warning C4305: '=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(990,35): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(991,70): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1000,35): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1015,37): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1020,37): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1028,34): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1029,70): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1035,24): warning C4305: '=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1039,35): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1040,70): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1046,25): warning C4305: '=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1051,35): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1052,70): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1061,35): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1073,41): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1082,33): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1087,33): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1093,34): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1098,34): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1105,38): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1113,38): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1122,42): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1131,37): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1139,37): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1147,39): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1148,39): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1157,38): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1168,38): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1177,38): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1330,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1331,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1335,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1336,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1338,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(1339,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
   ProyectoFinal.vcxproj -> D:\Repositorio\315087372_Proyecto_Gpo09\ProyectoFinal\Debug\ProyectoFinal.exe
