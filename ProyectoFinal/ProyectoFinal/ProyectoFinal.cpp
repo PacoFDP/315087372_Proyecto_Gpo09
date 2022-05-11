@@ -106,7 +106,8 @@ float brilloFoco = 0;
 
 // Animacion niño
 bool ninoEncendido = false;
-bool segmento1 = true;
+bool segmento0 = true;
+bool segmento1 = false;
 bool segmento2 = false;
 bool segmento3 = false;
 bool segmento4 = false;
@@ -114,14 +115,15 @@ bool segmento5 = false;
 bool segmento6 = false;
 bool segmento7 = false;
 bool segmento8 = false;
-bool segmento9 = false;
 
-float posicionCorredorX = -5.0;
+
+float posicionCorredorX = -27.0;
 float posicionCorredorY = 2.8;
-float posicionCorredorZ = 65.5;
-float rotacionCorredor = 0;
+float posicionCorredorZ = -35.0;
+float rotacionCorredor = 270;
 float pasoDerecho = 0;
 bool direccionPaso = true;
+bool paro = false;
 
 
 
@@ -377,7 +379,7 @@ int main()
         // Configuración de la iluminacion general
         glUniform3f(glGetUniformLocation(lightingShader.Program, "light.ambient"), 0.8f, 0.8f, 0.8f);
         glUniform3f(glGetUniformLocation(lightingShader.Program, "light.diffuse"), 0.5f, 0.5f, 0.5f);
-        glUniform3f(glGetUniformLocation(lightingShader.Program, "light.specular"), 2.0f, 2.0f, 2.0f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "light.specular"), 0.1f, 0.1f, 0.1f);
 
         // Configuracion point light 1
         glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].position"), pointLightPositions[0].x, pointLightPositions[0].y, pointLightPositions[0].z);
@@ -1101,6 +1103,14 @@ void DoMovement()
     
     //Activa niño corriendo
     if (ninoEncendido == true) {
+        if (segmento0 == true) {
+            posicionCorredorZ += 0.15;
+            if (posicionCorredorZ >= 65.5) {
+                segmento0 = false;
+                rotacionCorredor = 0;
+                segmento1 = true;
+            }
+        }
         if (segmento1 == true) {
             posicionCorredorX += 0.15;
             if (posicionCorredorX >= 9.5) {
@@ -1118,7 +1128,9 @@ void DoMovement()
             }
         }
         if (segmento3 == true) {
+            paro = true;
             if (rotacionPuerta >= 90) {
+                paro = false;
                 posicionCorredorZ -= 0.15;
                 if (posicionCorredorZ <= 16.5) {
                     segmento3 = false;
@@ -1155,6 +1167,9 @@ void DoMovement()
         }
         if (segmento7 == true) {
             posicionCorredorZ -= 0.15;
+            if (posicionCorredorZ <= -30) {
+                posicionCorredorY = 2.8;
+            }
             if (posicionCorredorZ <= -35.0) {
                 segmento7 = false;
                 segmento8 = true;
@@ -1166,36 +1181,30 @@ void DoMovement()
         
         if (segmento8 == true) {
             posicionCorredorX -= 0.15;
-            if (posicionCorredorX <= -26) {
+            if (posicionCorredorX <= -27) {
                 segmento8 = false;
-                segmento9 = true;
+                segmento0 = true;
                 rotacionCorredor = 270;
             }
         }
-
-        if (segmento9 == true) {
-            posicionCorredorZ += 0.15;
-            if (posicionCorredorZ >= 65.5) {
-                segmento9 = false;
-                rotacionCorredor = 0;
-                segmento1 = true;
+        if (paro == false) {
+            if (direccionPaso == true) {
+                pasoDerecho += 0.9;
+                if (pasoDerecho >= 30) {
+                    direccionPaso = false;
+                }
+            }
+            if (direccionPaso == false) {
+                pasoDerecho -= 0.9;
+                if (pasoDerecho <= -30) {
+                    direccionPaso = true;
+                }
             }
         }
-
-
-
-        if (direccionPaso == true) {
-            pasoDerecho += 0.5;
-            if (pasoDerecho >= 30) {
-                direccionPaso = false;
-            }
+        else {
+            pasoDerecho = 0;
         }
-        if (direccionPaso == false) {
-            pasoDerecho -= 0.5;
-            if (pasoDerecho <= -30) {
-                direccionPaso = true;
-            }
-        }
+        
     }
     
     

@@ -1,35 +1,28 @@
-newmtl Cama:lambert2SG
+newmtl arribaCama:lambert2SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd blanco.jpg
 Ni 1.00
-newmtl Cama:lambert5SG
+newmtl arribaCama:lambert5SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd COBIJASOBRE.jpg
 Ni 1.00
-newmtl Cama:lambert6SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd azul_claro.jpg
-Ni 1.00
-newmtl Cama:lambert7SG
+newmtl arribaCama:lambert7SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd azulintermedio.jpg
 Ni 1.00
-newmtl Cama:lambert8SG
+newmtl lambert3SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
-map_Kd madera.jpg
+map_Kd flores.jpg
 Ni 1.00
