@@ -9,16 +9,23 @@ illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
-map_Kd txtMaderaCafeClaro.jpg
+map_Kd plantas.jpg
 Ni 1.00
 newmtl ExteriorInterior:lambert2SG2
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
-map_Kd pastoafuera.jpg
+map_Kd txtMaderaCafeClaro.jpg
 Ni 1.00
 newmtl ExteriorInterior:lambert2SG4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd pastoafuera.jpg
+Ni 1.00
+newmtl ExteriorInterior:lambert2SG6
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
@@ -101,11 +108,4 @@ Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd BardaPiedra.jpg
-Ni 1.00
-newmtl Planta:lambert2SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd plantas.jpg
 Ni 1.00

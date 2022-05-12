@@ -1,1 +1,0 @@
-Poner carpeta "SillaEscritorio" en donde esta el Main 

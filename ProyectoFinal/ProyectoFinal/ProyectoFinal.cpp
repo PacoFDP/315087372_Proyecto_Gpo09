@@ -98,12 +98,6 @@ float posicionSilla = 0;
 float posicionSilla2 = 0;
 bool activaSilla2 = false;
 
-// Animacion del manejo de iluminación
-bool lamparaEncedida = false;
-float brilloLampara = 0;
-bool focoEncendido = false;
-float brilloFoco = 0;
-
 // Animacion niño
 bool ninoEncendido = false;
 bool segmento0 = true;
@@ -126,17 +120,6 @@ bool direccionPaso = true;
 bool paro = false;
 
 
-
-
-// Posicion de los puntos de luz para lampara y foco   ------------- QUITAR SI NO FUNCIONA LUZ
-glm::vec3 pointLightPositions[] = {
-    glm::vec3(0.0f,7.0f, 0.0f),
-    glm::vec3(-0.0f,4.05f, -0.0f),
-};
-
-
-
-
 // -- FUNCION PRINCIPAL
 int main()
 {
@@ -149,7 +132,7 @@ int main()
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-    // Creacion del obejto GLFWwindow que puede ser usado por las funciones GLFW
+    // Creacion del objeto GLFWwindow que puede ser usado por las funciones GLFW
     GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Proyecto Final", nullptr, nullptr);
     if (nullptr == window)
     {
@@ -164,9 +147,6 @@ int main()
     // Se establecen las funciones de devolución de llamada requeridas
     glfwSetKeyCallback(window, KeyCallback);
     glfwSetCursorPosCallback(window, MouseCallback);
-
-    // GLFW Options   -----------------------------------------------------------------------  QUITAR SI NO SIRVE
-    //glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_DISABLED );
 
     // Configuracion necesaria que GLEW pueda recuperar punteros de funciones y extensiones
     glewExperimental = GL_TRUE;
@@ -186,14 +166,8 @@ int main()
     // -- SECCION SHADERS --
     // Se indican los shaders a utilizar
     Shader shader("Shaders/modelLoading.vs", "Shaders/modelLoading.frag");
-    Shader lampshader("Shaders/Practica 8/lamp.vs", "Shaders/Practica 8/lamp.frag");
-    Shader lightingShader("Shaders/Practica 8/lighting.vs", "Shaders/Practica 8/lighting.frag");
-
-    // Shaders necesarios para pointlights
-    /*Shader lightingShader("Shaders/lighting.vs", "Shaders/lighting.frag");
-    Shader lampshader("Shaders/lamp.vs", "Shaders/lamp.frag");*/
-
-
+    Shader lampshader("Shaders/Proyecto/lamp.vs", "Shaders/Proyecto/lamp.frag");
+    Shader lightingShader("Shaders/Proyecto/lighting.vs", "Shaders/Proyecto/lighting.frag");
 
     // -- SECCION CARGA DE MODELOS --
     // Necesario que modelo a cargar sea .obj
@@ -355,7 +329,7 @@ int main()
     // Game loop
     while (!glfwWindowShouldClose(window))
     {
-        // Configuracion del timepo de frame
+        // Configuracion del tiempo de frame
         GLfloat currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
@@ -379,25 +353,7 @@ int main()
         // Configuración de la iluminacion general
         glUniform3f(glGetUniformLocation(lightingShader.Program, "light.ambient"), 0.8f, 0.8f, 0.8f);
         glUniform3f(glGetUniformLocation(lightingShader.Program, "light.diffuse"), 0.5f, 0.5f, 0.5f);
-        glUniform3f(glGetUniformLocation(lightingShader.Program, "light.specular"), 0.1f, 0.1f, 0.1f);
-
-        // Configuracion point light 1
-        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].position"), pointLightPositions[0].x, pointLightPositions[0].y, pointLightPositions[0].z);
-        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].ambient"), brilloLampara, brilloLampara, brilloLampara);
-        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].diffuse"), brilloLampara, brilloLampara, brilloLampara);
-        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].specular"), 1.0f, 1.0f, 0.0f);
-        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].constant"), 1.0f);
-        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].linear"), 0.35f);
-        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].quadratic"), 0.44f);
-
-        // Configuracion point light 2
-        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[1].position"), pointLightPositions[1].x, pointLightPositions[1].y, pointLightPositions[1].z);
-        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[1].ambient"), brilloFoco, brilloFoco, brilloFoco);
-        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[1].diffuse"), brilloFoco, brilloFoco, brilloFoco);
-        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[1].specular"), 1.0f, 1.0f, 0.0f);
-        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[1].constant"), 1.0f);
-        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[1].linear"), 0.35f);
-        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[1].quadratic"), 0.44f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "light.specular"), 0.7f, 0.7f, 0.7f);
 
 
         glm::mat4 view = camera.GetViewMatrix();
@@ -598,7 +554,7 @@ int main()
         glBindVertexArray(VAO);
         pantallaEstructura.Draw(lightingShader);
 
-        // Exterior
+        // Exterior e interior
         //iluminacion y caracteristicas para elementos de exterior e interior
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 0.9f, 0.9f, 0.9f);
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.2f, 0.2f, 0.2f);
@@ -784,14 +740,13 @@ int main()
         piernaPersona1.Draw(lightingShader);
 
 
-        //Persona corriendo alrededor
+        //Persona corriendo en la casa
         //iluminacion y caracteristicas cuerpo de personaje corriendo
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 1.0f, 1.0f, 1.0f);
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.633f, 0.727811f, 0.633f);
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.6f);
 
         model = glm::mat4(1);
-        
         model = glm::translate(model, glm::vec3(posicionCorredorX, posicionCorredorY, posicionCorredorZ));
         model = glm::rotate(model, glm::radians(rotacionCorredor), glm::vec3(0.0f, 1.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
@@ -804,7 +759,6 @@ int main()
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.6f);
 
         model = glm::mat4(1);
-        
         model = glm::translate(model, glm::vec3(posicionCorredorX, posicionCorredorY, posicionCorredorZ));
         model = glm::rotate(model, glm::radians(rotacionCorredor), glm::vec3(0.0f, 1.0f, 0.0f));
         model = glm::rotate(model, glm::radians(pasoDerecho), glm::vec3(0.0f, 0.0f, 1.0f));
@@ -818,7 +772,6 @@ int main()
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.6f);
 
         model = glm::mat4(1);
-        
         model = glm::translate(model, glm::vec3(posicionCorredorX, posicionCorredorY, posicionCorredorZ));
         model = glm::rotate(model, glm::radians(rotacionCorredor), glm::vec3(0.0f, 1.0f, 0.0f));
         model = glm::rotate(model, glm::radians(-pasoDerecho), glm::vec3(0.0f, 0.0f, 1.0f));
@@ -826,39 +779,9 @@ int main()
         glBindVertexArray(VAO);
         piernaIzquierdaCorredor.Draw(lightingShader);
 
-
-        //VERIFICAR TODO ESTO
-        lampshader.Use();
-        // Get location objects for the matrices on the lamp shader (these could be different on a different shader)
-        GLint modelLoc = glGetUniformLocation(lampshader.Program, "model");
-        GLint viewLoc = glGetUniformLocation(lampshader.Program, "view");
-        GLint projLoc = glGetUniformLocation(lampshader.Program, "projection");
-
-        // Set matrices
-        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-        glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
-        model = glm::mat4(1);
-        model = glm::translate(model, lightPos);
-        model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-        //dibuja los puntos de luz
-        for (GLuint i = 0; i < 2; i++)
-        {
-            model = glm::mat4(1);
-            model = glm::translate(model, pointLightPositions[i]);
-            model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
-            glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-            glBindVertexArray(VAO);
-            glDrawArrays(GL_TRIANGLES, 0, 36);
-        }
-
-
         glBindVertexArray(0);
 
-
-
-
-        //lampshader.Use();
+        lampshader.Use();
         glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
         glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
         model = glm::mat4(1.0f);
@@ -871,18 +794,7 @@ int main()
         glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);
-        // ---------
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(-0.0f, 0.0f, -5.0F));
-
-        model = glm::scale(model, glm::vec3(0.9f));
-        glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
-
-        glBindVertexArray(0);
-
-        //----------------------
+        
 
         // Swap the buffers
         glfwSwapBuffers(window);
@@ -918,12 +830,6 @@ void DoMovement()
     {
         camera.ProcessKeyboard(RIGHT, deltaTime);
     }
-
-    /*if (activanim)
-    {
-        if (rot > -90.0f)
-            rot -= 0.1f;
-    }*/
 
     // Actualizacion de rotacion ventilador
     if (ventiladorEncendido == true) {
@@ -1089,7 +995,7 @@ void DoMovement()
             posicionSilla += 0.1;
         }
     }
-    // Actualizacion posicion silla 1
+    // Actualizacion posicion silla 2
     if (activaSilla2 == true) {
         if (posicionSilla2 >= -2) {
             posicionSilla2 -= 0.1;
@@ -1205,19 +1111,7 @@ void DoMovement()
             pasoDerecho = 0;
         }
         
-    }
-    
-    
-    /*if (posicionCorredor >= 5.5) {
-        rotacionCorredor = 180;
-        posicionCorredor += 0.007;
-    }*/
-
-    /*if (posicionCorredor >= 10) {
-        rotacionCorredor = 90;
-    }*/
-    
-    
+    } 
     
 }
 
@@ -1240,39 +1134,39 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
             keys[key] = false;
         }
     }
-    //EJE X
+    //Mueve iluminacion en eje X
     if (keys[GLFW_KEY_H])
     {
-        //activanim = true;
+        //En direccion negativa de X
         movelightPosX -= 0.1f;
     }
     if (keys[GLFW_KEY_L])
     {
-        //activanim = true;
+        //En direccion positiva de X
         movelightPosX += 0.1f;
     }
 
-    // EJE Z
+    //Mueve iluminacion en eje Z
     if (keys[GLFW_KEY_U])
     {
-        //activanim = true;
+        //En direccion positiva de Z
         movelightPosZ += 0.1f;
     }
     if (keys[GLFW_KEY_J])
     {
-        //activanim = true;
+        //En direccion negativa de Z
         movelightPosZ -= 0.1f;
     }
 
-    // EJE Y
+    //Mueve iluminacion en eje Y
     if (keys[GLFW_KEY_M])
     {
-        //activanim = true;
+        //En direccion positiva de Y
         movelightPosY += 0.1f;
     }
     if (keys[GLFW_KEY_N])
     {
-        //activanim = true;
+        //En direccion negativa de Y
         movelightPosY -= 0.1f;
     }
 
@@ -1300,17 +1194,6 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
         balonEncendido = !balonEncendido;
     }
 
-    // Se enciende lampara   ------------------------ REVISAR --------------------------------
-    if (keys[GLFW_KEY_F])
-    {
-        lamparaEncedida = !lamparaEncedida;
-    }
-
-    // Se enciende foco de habitacion
-    if (keys[GLFW_KEY_R])
-    {
-        focoEncendido = !focoEncendido;
-    }
 
     //Activa movimiento de silla 1 (derecha)
     if (keys[GLFW_KEY_1])
